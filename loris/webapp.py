@@ -479,7 +479,10 @@ class Loris:
                 return BadRequestResponse('"%s" is not a supported format' % (fmt,))
             quality = params['quality']
             rotation = params['rotation']
-            size = params['size']
+            if params['size'] == 'max':
+                size = 'full'
+            else:
+                size = params['size']
             region = params['region']
 
             return self.get_img(request, ident, region, size, rotation, quality, fmt, base_uri)
